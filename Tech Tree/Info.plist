@@ -53,6 +53,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.843783056798-0tjrpq2otukgshngbdkvkbnuvvovk10d</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.googleusercontent.apps.843783056798-0tjrpq2otukgshngbdkvkbnuvvovk10d</string>
+		</dict>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

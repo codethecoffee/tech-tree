@@ -15,8 +15,12 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    // Use Firebase library to configure APIs
+    [FIRApp configure];
+    
+    [GIDSignIn sharedInstance].clientID = @"843783056798-0tjrpq2otukgshngbdkvkbnuvvovk10d.apps.googleusercontent.com";
+    [GIDSignIn sharedInstance].delegate = self;  // If AppDelegate conforms to GIDSignInDelegate
     return YES;
 }
 
@@ -37,5 +41,71 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
+
+// IMPLEMENTATION OF FIREBASE GOOGLE SIGN IN
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    return [[GIDSignIn sharedInstance] handleURL:url];
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+didSignInForUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    // ...
+    if (error == nil) {
+        GIDAuthentication *authentication = user.authentication;
+        FIRAuthCredential *credential =
+        [FIRGoogleAuthProvider
+         credentialWithIDToken:authentication.idToken
+         accessToken:authentication.accessToken];
+        NSLog(@"Signed in successfully!");
+        
+        NSString *userId = user.userID;
+        NSString *idToken = user.authentication.idToken;
+        NSString *fullName = user.profile.name;
+        NSString *email = user.profile.email;
+        NSLog(@"userID: %@, fullName: %@, email: %@", userId, fullName, email);
+    } else {
+        NSLog(@"Something went wrong; could not login properly");
+    }
+}
+
+//- (void)signIn:(GIDSignIn *)signIn
+//didSignInForUser:(GIDGoogleUser *)user
+//     withError:(NSError *)error {
+//    if (error != nil) {
+//        if (error.code == kGIDSignInErrorCodeHasNoAuthInKeychain) {
+//            NSLog(@"The user has not signed in before or they have since signed out.");
+//        } else {
+//            NSLog(@"%@", error.localizedDescription);
+//        }
+//        return;
+//    }
+//
+//    // Perform any operations on signed in user here.
+//    NSString *userId = user.userID;
+//    NSString *idToken = user.authentication.idToken;
+//    NSString *fullName = user.profile.name;
+////    NSString *givenName = user.profile.givenName;
+////    NSString *familyName = user.profile.familyName;
+//    NSString *email = user.profile.email;
+//
+//    NSLog(@"userID: %@, fullName: %@, email: %@", userId, fullName, email);
+//}
+
+- (void)signIn:(GIDSignIn *)signIn
+didDisconnectWithUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    // Perform any operations when the user disconnects from app here.
+    // ...
+}
+
+/**
+ Sign out user on current device
+ */
+- (IBAction)didTapSignOut:(id)sender {
+    [[GIDSignIn sharedInstance] signOut];
+}
 
 @end
