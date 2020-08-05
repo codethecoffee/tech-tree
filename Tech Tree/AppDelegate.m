@@ -62,37 +62,20 @@ didSignInForUser:(GIDGoogleUser *)user
         NSLog(@"Signed in successfully!");
         
         NSString *userId = user.userID;
-        NSString *idToken = user.authentication.idToken;
         NSString *fullName = user.profile.name;
         NSString *email = user.profile.email;
         NSLog(@"userID: %@, fullName: %@, email: %@", userId, fullName, email);
+                
+        // Authenticate with Firebase using the id token
+        [[FIRAuth auth] signInWithCredential:credential completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+            NSLog(error.localizedDescription);
+        }];
+        
+        
     } else {
         NSLog(@"Something went wrong; could not login properly");
     }
 }
-
-//- (void)signIn:(GIDSignIn *)signIn
-//didSignInForUser:(GIDGoogleUser *)user
-//     withError:(NSError *)error {
-//    if (error != nil) {
-//        if (error.code == kGIDSignInErrorCodeHasNoAuthInKeychain) {
-//            NSLog(@"The user has not signed in before or they have since signed out.");
-//        } else {
-//            NSLog(@"%@", error.localizedDescription);
-//        }
-//        return;
-//    }
-//
-//    // Perform any operations on signed in user here.
-//    NSString *userId = user.userID;
-//    NSString *idToken = user.authentication.idToken;
-//    NSString *fullName = user.profile.name;
-////    NSString *givenName = user.profile.givenName;
-////    NSString *familyName = user.profile.familyName;
-//    NSString *email = user.profile.email;
-//
-//    NSLog(@"userID: %@, fullName: %@, email: %@", userId, fullName, email);
-//}
 
 - (void)signIn:(GIDSignIn *)signIn
 didDisconnectWithUser:(GIDGoogleUser *)user
