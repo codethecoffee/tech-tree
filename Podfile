@@ -4,6 +4,9 @@
 target 'Tech Tree' do
   # Comment the next line if you don't want to use dynamic frameworks
   # use_frameworks!
+  
+  pod 'ComponentKit'
+  pod 'lottie-ios'
 
   # Google Analytics
   pod 'Firebase/Analytics'

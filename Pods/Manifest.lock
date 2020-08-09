@@ -223,6 +223,9 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - ComponentKit (0.30):
+    - RenderCore (= 0.30)
+    - Yoga (~> 1.14)
   - Firebase/Analytics (6.28.1):
     - Firebase/Core
   - Firebase/Auth (6.28.1):
@@ -346,25 +349,31 @@ PODS:
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
   - leveldb-library (1.22)
+  - lottie-ios (3.1.8)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - RenderCore (0.30)
+  - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - ComponentKit
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
   - FirebaseUI/Google
   - GoogleSignIn
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - abseil
     - AppAuth
     - BoringSSL-GRPC
+    - ComponentKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -382,13 +391,17 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - leveldb-library
+    - lottie-ios
     - nanopb
     - PromisesObjC
+    - RenderCore
+    - Yoga
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  ComponentKit: c34da1ab3515cf18db68a4ba22c6599568d1de74
   Firebase: ed042590caa0029392257529a8003c25ee82bc18
   FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
   FirebaseAuth: 06feef26ff3a98323677c76c4102146b872cd6b7
@@ -406,9 +419,12 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  RenderCore: d779c47622b313ce2d51bb36d084517af38b0dc1
+  Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
 
-PODFILE CHECKSUM: ab3fce3c8b317b248b7232f2e2e65d22734adb75
+PODFILE CHECKSUM: 6b8aee8095aa8c8a60cdd6f01a5c3921f4d300af
 
 COCOAPODS: 1.9.3

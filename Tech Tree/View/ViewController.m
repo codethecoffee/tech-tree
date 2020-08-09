@@ -19,8 +19,6 @@
     [GIDSignIn sharedInstance].presentingViewController = self;
     // Sign in silently if possible
     [[GIDSignIn sharedInstance] signIn];
-
-    
     
 }
 

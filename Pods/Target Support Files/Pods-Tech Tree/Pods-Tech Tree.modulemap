@@ -1,0 +1,6 @@
+module Pods_Tech_Tree {
+  umbrella header "Pods-Tech Tree-umbrella.h"
+
+  export *
+  module * { export * }
+}

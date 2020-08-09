@@ -59,7 +59,6 @@ didSignInForUser:(GIDGoogleUser *)user
         [FIRGoogleAuthProvider
          credentialWithIDToken:authentication.idToken
          accessToken:authentication.accessToken];
-        NSLog(@"Signed in successfully!");
         
         NSString *userId = user.userID;
         NSString *fullName = user.profile.name;
@@ -68,7 +67,12 @@ didSignInForUser:(GIDGoogleUser *)user
                 
         // Authenticate with Firebase using the id token
         [[FIRAuth auth] signInWithCredential:credential completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-            NSLog(error.localizedDescription);
+            if (error == nil) {
+                NSLog(@"SUCCESSFUL LOG IN!");
+                
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+            }
         }];
         
         
